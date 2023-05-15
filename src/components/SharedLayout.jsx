@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Container, Header, Logo } from './SharedLayout.styled';
+import { Container, Header, Logo, Link } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
@@ -12,8 +12,8 @@ const SharedLayout = () => {
           GoMerch Store
         </Logo>
         <nav>
-          <NavLink to={'/'}>Home</NavLink>
-          <NavLink to={'/movies'}>Movies</NavLink>
+          <Link to={'/'}>Home</Link>
+          <Link to={'/movies'}>Movies</Link>
         </nav>
       </Header>
       <main>

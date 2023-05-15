@@ -1,4 +1,5 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
+import { StyledLink } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -9,10 +10,10 @@ const MovieDetails = () => {
       <h1>MovieDetails 🎬</h1>
       <ul>
         <li>
-          <Link to={'cast'}>Cast</Link>
+          <StyledLink to={'cast'}>Cast</StyledLink>
         </li>
         <li>
-          <Link to={'reviews'}>Reviews</Link>
+          <StyledLink to={'reviews'}>Reviews</StyledLink>
         </li>
       </ul>
       <Outlet />
