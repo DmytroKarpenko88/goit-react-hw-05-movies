@@ -1,5 +1,3 @@
-import Cast from 'components/Cast';
-import Reviews from 'components/Reviews';
 import { Link, Outlet, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
