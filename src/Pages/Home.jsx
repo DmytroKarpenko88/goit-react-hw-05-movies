@@ -1,14 +1,34 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { fetchTrending } from 'services/api';
 
 const Home = () => {
-  // useEffect(() => {
+  const [activPage, setActivPage] = useState(1);
+  const [moviesList, setMoviesList] = useState([]);
 
-  // }, []);
+  useEffect(() => {
+    console.log('First render');
 
+    getListMovies();
+  }, []);
+
+  const getListMovies = async () => {
+    const { results } = await fetchTrending();
+    console.log('results:', results);
+    setMoviesList([...results]);
+  };
   return (
     <div>
       <h1>Home page 👍</h1>
+      <ul>
+        {moviesList.map(({ id, title, name, original_title, poster_path }) => (
+          <li key={id}>
+            <p>{title || name}</p>
+            <img src={poster_path} alt={original_title || name} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
