@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { fetchTrending } from 'services/api';
 
 const Home = () => {
-  const [activPage, setActivPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  // const [activPage, setActivPage] = useState(1);
   const [moviesList, setMoviesList] = useState([]);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const Home = () => {
   }, []);
 
   const getListMovies = async () => {
+    setLoading(true);
     const { results } = await fetchTrending();
     console.log('results:', results);
     setMoviesList([...results]);
@@ -28,6 +30,9 @@ const Home = () => {
             <img src={poster_path} alt={original_title || name} />
           </li>
         ))}
+        {loading && (
+          <button onClick={() => setLoading(!loading)}>Load more</button>
+        )}
       </ul>
     </div>
   );

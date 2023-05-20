@@ -44,10 +44,11 @@ export async function fetchTrending() {
   }
 }
 
-export async function searchMovie() {
+export async function searchMovie(searchValue) {
   const config = {
     params: {
       api_key: API_KEY,
+      query: searchValue,
       include_adult: 'false',
       language: 'en-US',
       page: '1',
