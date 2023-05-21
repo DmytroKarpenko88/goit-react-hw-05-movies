@@ -11,8 +11,8 @@ const Movies = () => {
   console.log('location:', location);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState('');
   const query = searchParams.get('query') ?? '';
+  const [searchQuery, setSearchQuery] = useState(query);
 
   const onSubmit = () => {
     setSearchQuery(query);
@@ -46,11 +46,6 @@ const Movies = () => {
 
   useEffect(() => {
     if (!searchQuery) {
-      console.log('Back');
-
-      // if (query) {
-      //   searchMovie(query).then(({ results }) => setMovies([...results]));
-      // }
       return;
     }
     searchMovie(searchQuery).then(({ results }) => setMovies([...results]));
