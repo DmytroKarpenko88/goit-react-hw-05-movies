@@ -2,7 +2,8 @@ import { Notify } from 'notiflix';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
-import { IMG_URL } from 'variables';
+import { IMG_URL } from 'services/variables';
+import { Heading, Grid, GridItem } from 'components';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -47,9 +48,9 @@ const Movies = () => {
     if (!searchQuery) {
       console.log('Back');
 
-      if (query) {
-        searchMovie(query).then(({ results }) => setMovies([...results]));
-      }
+      // if (query) {
+      //   searchMovie(query).then(({ results }) => setMovies([...results]));
+      // }
       return;
     }
     searchMovie(searchQuery).then(({ results }) => setMovies([...results]));
@@ -57,7 +58,7 @@ const Movies = () => {
 
   return (
     <div>
-      <h2>Movies 🎬</h2>
+      <Heading>Movies 🎬</Heading>
 
       <form onSubmit={handleSubmit}>
         <button type="submit">Search</button>
@@ -65,18 +66,18 @@ const Movies = () => {
       </form>
       {/* <input type="text" value={query} onChange={updateQueryString} /> */}
 
-      <ul>
+      <Grid>
         {movies.map(({ id, title, poster_path }) => {
           return (
-            <li key={id}>
+            <GridItem key={id}>
               <Link to={`${id}`} state={{ from: location }}>
                 <img src={`${IMG_URL}${poster_path}`} alt={title} />
                 {title}
               </Link>
-            </li>
+            </GridItem>
           );
         })}
-      </ul>
+      </Grid>
     </div>
   );
 };

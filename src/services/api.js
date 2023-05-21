@@ -28,10 +28,11 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 
 axios.defaults.baseURL = BASE_URL;
 
-export async function fetchTrending() {
+export async function fetchTrending(page = 1) {
   const config = {
     params: {
       api_key: API_KEY,
+      page: page,
     },
   };
 

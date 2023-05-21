@@ -1,3 +1,4 @@
+import { Grid } from 'components';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
@@ -16,7 +17,7 @@ const Cast = () => {
     <div>
       <>Cast: {query}</>
       <h3>Top Billed Cast</h3>
-      <ul>
+      <Grid>
         {casts.map(({ id, name, profile_path, character }) => {
           return (
             <li key={id}>
@@ -31,7 +32,7 @@ const Cast = () => {
             </li>
           );
         })}
-      </ul>
+      </Grid>
     </div>
   );
 };

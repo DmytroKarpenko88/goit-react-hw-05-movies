@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
-import { IMG_URL } from 'variables';
+import { IMG_URL } from 'services/variables';
 
 const Reviews = () => {
   const { query } = useParams();

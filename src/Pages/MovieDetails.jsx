@@ -2,7 +2,8 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { StyledLink } from './MovieDetails.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { getMovieDetails } from 'services/api';
-import { IMG_URL } from 'variables';
+import { IMG_URL } from 'services/variables';
+import { Heading } from 'components';
 
 const MovieDetails = () => {
   const { query } = useParams();
@@ -25,7 +26,7 @@ const MovieDetails = () => {
       <h1>MovieDetails 🎬 {movie.title}</h1>
       <Link to={backLinkLocationRef.current}>Back</Link>
       <div>
-        <h2>{movie.title}</h2>
+        <Heading>{movie.title}</Heading>
         <section>
           <div>
             <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
