@@ -2,6 +2,7 @@ import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
+import { IMG_URL } from 'variables';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -71,7 +72,7 @@ const Movies = () => {
           return (
             <li key={id}>
               <Link to={`${id}`} state={{ from: location }}>
-                <img src={poster_path} alt={title} />
+                <img src={`${IMG_URL}${poster_path}`} alt={title} />
                 {title}
               </Link>
             </li>

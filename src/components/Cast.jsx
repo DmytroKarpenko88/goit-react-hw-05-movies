@@ -4,21 +4,13 @@ import { getMovieCredits } from 'services/api';
 
 const Cast = () => {
   const { movieId } = useParams();
-
   const [casts, setCasts] = useState([]);
 
   useEffect(() => {
-    const getCast = async () => {
-      try {
-        await getMovieCredits(movieId).then(({ cast }) => {
-          console.log(cast);
-          setCasts(cast);
-        });
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getCast();
+    getMovieCredits(movieId).then(({ cast }) => {
+      console.log(cast);
+      setCasts(cast);
+    });
   }, [movieId]);
   return (
     <div>
@@ -29,7 +21,10 @@ const Cast = () => {
           return (
             <li key={id}>
               <div>
-                <img src={profile_path} alt={name} />
+                <img
+                  src={`https://image.tmdb.org/t/p/original${profile_path}`}
+                  alt={name}
+                />
                 <p>{name}</p>
                 <p>{character}</p>
               </div>

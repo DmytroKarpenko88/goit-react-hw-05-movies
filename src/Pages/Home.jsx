@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchTrending } from 'services/api';
+import { IMG_URL } from 'variables';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -27,7 +28,10 @@ const Home = () => {
         {moviesList.map(({ id, title, name, original_title, poster_path }) => (
           <li key={id}>
             <p>{title || name}</p>
-            <img src={poster_path} alt={original_title || name} />
+            <img
+              src={`${IMG_URL}${poster_path}`}
+              alt={original_title || name}
+            />
           </li>
         ))}
         {loading && (

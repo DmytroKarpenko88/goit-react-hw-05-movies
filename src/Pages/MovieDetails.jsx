@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { StyledLink } from './MovieDetails.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { getMovieDetails } from 'services/api';
+import { IMG_URL } from 'variables';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -11,19 +12,14 @@ const MovieDetails = () => {
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
   console.log('backLinkLocationRef:', backLinkLocationRef);
   console.log('location:', location);
+  console.log('movie:', movie);
 
   useEffect(() => {
-    const getDetails = async () => {
-      try {
-        const res = await getMovieDetails(movieId);
-        setMovie(res);
-        console.log(res);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getDetails();
+    getMovieDetails(movieId).then(res => {
+      setMovie(res);
+    });
   }, [movieId]);
+
   return (
     <div>
       <h1>MovieDetails 🎬 {movieId}</h1>
@@ -32,7 +28,7 @@ const MovieDetails = () => {
         <h2>{movie.title}</h2>
         <section>
           <div>
-            <img src={movie.poster_path} alt={movie.title} />
+            <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
           </div>
           <div>
             <section>
