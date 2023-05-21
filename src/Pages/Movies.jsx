@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
 import { IMG_URL } from 'variables';
@@ -10,52 +10,50 @@ const Movies = () => {
   console.log('location:', location);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState('');
-  const movieId = searchParams.get('movieId') ?? '';
+  const [searchQuery, setSearchQuery] = useState('');
+  const query = searchParams.get('query') ?? '';
 
-  const onSubmit = newQuery => {
-    if (newQuery !== query) {
-      setQuery(query);
-      getMovies();
-    }
+  const onSubmit = () => {
+    setSearchQuery(query);
+    getMovies();
   };
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!movieId) {
+    if (!query) {
       Notify.failure('Enter the request');
       return;
     }
-    onSubmit(movieId);
+    onSubmit(query);
   };
-
-  // filer
-  // const visibleMovies = movies.filter(movie => movie.includes(movieId));
 
   const updateQueryString = e => {
     if (e.target.value === '') {
       return setSearchParams({});
     }
-    setSearchParams({ movieId: e.target.value });
+    setSearchParams({ query: e.target.value });
     // const nextParams = name !== '' ? {name} : {};
     // setSearchParams(nextParams)
   };
 
   const getMovies = async () => {
-    await searchMovie(movieId).then(({ results }) => {
+    await searchMovie(query).then(({ results }) => {
       console.log(results);
       setMovies([...results]);
     });
   };
 
-  // useEffect(() => {
-  //   if (!query) {
-  //     return;
-  //   }
-  //   // console.log('query', query);
+  useEffect(() => {
+    if (!searchQuery) {
+      console.log('Back');
 
-  //   getMovies();
-  // }, [getMovies, query]);
+      if (query) {
+        searchMovie(query).then(({ results }) => setMovies([...results]));
+      }
+      return;
+    }
+    searchMovie(searchQuery).then(({ results }) => setMovies([...results]));
+  }, [searchQuery]);
 
   return (
     <div>
@@ -63,9 +61,9 @@ const Movies = () => {
 
       <form onSubmit={handleSubmit}>
         <button type="submit">Search</button>
-        <input type="text" value={movieId} onChange={updateQueryString} />
+        <input type="text" value={query} onChange={updateQueryString} />
       </form>
-      <input type="text" value={movieId} onChange={updateQueryString} />
+      {/* <input type="text" value={query} onChange={updateQueryString} /> */}
 
       <ul>
         {movies.map(({ id, title, poster_path }) => {

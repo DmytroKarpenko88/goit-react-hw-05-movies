@@ -5,7 +5,7 @@ import { getMovieDetails } from 'services/api';
 import { IMG_URL } from 'variables';
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
+  const { query } = useParams();
   const [movie, setMovie] = useState({});
 
   const location = useLocation();
@@ -15,14 +15,14 @@ const MovieDetails = () => {
   console.log('movie:', movie);
 
   useEffect(() => {
-    getMovieDetails(movieId).then(res => {
+    getMovieDetails(query).then(res => {
       setMovie(res);
     });
-  }, [movieId]);
+  }, [query]);
 
   return (
     <div>
-      <h1>MovieDetails 🎬 {movieId}</h1>
+      <h1>MovieDetails 🎬 {movie.title}</h1>
       <Link to={backLinkLocationRef.current}>Back</Link>
       <div>
         <h2>{movie.title}</h2>

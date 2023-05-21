@@ -4,22 +4,22 @@ import { getMovieReviews } from 'services/api';
 import { IMG_URL } from 'variables';
 
 const Reviews = () => {
-  const { movieId } = useParams();
+  const { query } = useParams();
   const [reviews, setReviews] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
 
   useEffect(() => {
-    getMovieReviews(movieId).then(({ results, total_results }) => {
+    getMovieReviews(query).then(({ results, total_results }) => {
       setReviews(results);
       setTotalResults(total_results);
       console.log('results', results);
       console.log('total_results', total_results);
     });
-  }, [movieId]);
+  }, [query]);
 
   return (
     <div>
-      <>Reviews: {movieId}</>
+      <>Reviews: {query}</>
       {totalResults && (
         <ul>
           {reviews.map(

@@ -3,18 +3,18 @@ import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
 
 const Cast = () => {
-  const { movieId } = useParams();
+  const { query } = useParams();
   const [casts, setCasts] = useState([]);
 
   useEffect(() => {
-    getMovieCredits(movieId).then(({ cast }) => {
+    getMovieCredits(query).then(({ cast }) => {
       console.log(cast);
       setCasts(cast);
     });
-  }, [movieId]);
+  }, [query]);
   return (
     <div>
-      <>Cast: {movieId}</>
+      <>Cast: {query}</>
       <h3>Top Billed Cast</h3>
       <ul>
         {casts.map(({ id, name, profile_path, character }) => {
