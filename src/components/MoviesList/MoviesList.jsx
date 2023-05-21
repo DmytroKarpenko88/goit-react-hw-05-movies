@@ -2,7 +2,7 @@ import { Grid, GridItem } from 'components';
 import React from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
-
+import poster from '../Images/movie-background-collage.jpg';
 import { IMG_URL } from 'services/variables';
 
 const MoviesList = ({ moviesList }) => {
@@ -17,7 +17,7 @@ const MoviesList = ({ moviesList }) => {
             <Link to={`movies/${id}`} state={{ from: location }}>
               <div>
                 <img
-                  src={`${IMG_URL}${poster_path}`}
+                  src={poster_path ? `${IMG_URL}${poster_path}` : poster}
                   alt={original_title || name}
                 />
               </div>

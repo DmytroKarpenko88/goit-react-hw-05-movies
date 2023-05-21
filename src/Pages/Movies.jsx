@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
 import { IMG_URL } from 'services/variables';
+import poster from '../components/Images/movie-background-collage.jpg';
 import { Heading, Grid, GridItem } from 'components';
 
 const Movies = () => {
@@ -66,7 +67,10 @@ const Movies = () => {
           return (
             <GridItem key={id}>
               <Link to={`${id}`} state={{ from: location }}>
-                <img src={`${IMG_URL}${poster_path}`} alt={title} />
+                <img
+                  src={poster_path ? `${IMG_URL}${poster_path}` : poster}
+                  alt={title}
+                />
                 {title}
               </Link>
             </GridItem>
