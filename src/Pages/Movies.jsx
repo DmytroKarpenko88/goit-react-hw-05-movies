@@ -16,7 +16,7 @@ const Movies = () => {
   const [searchQuery, setSearchQuery] = useState(query);
 
   const onSubmit = () => {
-    setSearchQuery(query);
+    // setSearchQuery(query);
     getMovies();
   };
   const handleSubmit = e => {

@@ -1,5 +1,5 @@
 import MoviesList from 'components/MoviesList/MoviesList';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { fetchTrending } from 'services/api';
 
@@ -7,13 +7,13 @@ const Home = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activPage, setActivPage] = useState(1);
-  // const isFirstRender = useRef(true);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
     fetchTrending(activPage)
       .then(({ results }) => setMoviesList(prev => [...prev, ...results]))
