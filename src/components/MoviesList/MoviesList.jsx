@@ -15,12 +15,12 @@ const MoviesList = ({ moviesList }) => {
         {moviesList.map(({ id, title, name, original_title, poster_path }) => (
           <GridItem key={id}>
             <Link to={`movies/${id}`} state={{ from: location }}>
-              <div>
+              <>
                 <img
                   src={poster_path ? `${IMG_URL}${poster_path}` : poster}
                   alt={original_title || name}
                 />
-              </div>
+              </>
               <p>{title || name}</p>
             </Link>
           </GridItem>

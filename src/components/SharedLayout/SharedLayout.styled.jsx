@@ -5,6 +5,16 @@ export const Container = styled.div`
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: calc(100vh - 30px);
+`;
+
+export const Content = styled.div`
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
 `;
 
 export const Header = styled.header`
@@ -48,7 +58,11 @@ export const Footer = styled.footer`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 
-  > nav {
+  height: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  & > nav {
     display: flex;
   }
 `;

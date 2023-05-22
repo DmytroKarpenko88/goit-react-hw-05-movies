@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import {
   Back,
   Box,
@@ -16,9 +16,9 @@ const MovieDetails = () => {
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
-  console.log('backLinkLocationRef:', backLinkLocationRef);
-  console.log('location:', location);
-  console.log('movie:', movie);
+  // console.log('backLinkLocationRef:', backLinkLocationRef);
+  // console.log('location:', location);
+  // console.log('movie:', movie);
 
   useEffect(() => {
     getMovieDetails(query).then(res => {
@@ -53,20 +53,16 @@ const MovieDetails = () => {
                   {movie.title} <span>({movie.release_date})</span>
                 </h2>
               </div>
-              <div className="facts">
-                <span></span>
-
+              <div>
                 <h3>Overview</h3>
                 <p>{movie.overview}</p>
 
-                {/* {movie.genres?.length > 0 && (
-                )} */}
                 <h3>Ganres</h3>
                 <p>{movie.genres?.map(({ name }) => name).join(', ')}</p>
                 <p>
                   <span>
-                    <b>Runtime:</b>{' '}
-                  </span>{' '}
+                    <b>Runtime:</b>
+                  </span>
                   {movie.runtime}
                 </p>
               </div>
@@ -74,13 +70,10 @@ const MovieDetails = () => {
                 <li>
                   <p>
                     <span>
-                      <b>Riting: </b>{' '}
-                    </span>{' '}
+                      <b>Riting: </b>
+                    </span>
                     {movie.vote_average}
                   </p>
-                </li>
-                <li>
-                  <Link>Play trailer</Link>
                 </li>
               </ul>
             </section>

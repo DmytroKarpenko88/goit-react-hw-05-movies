@@ -18,7 +18,6 @@ const Cast = () => {
   }, [query]);
   return (
     <div>
-      <>Cast: {query}</>
       <h3>Top Billed Cast</h3>
       <Grid>
         {casts.map(({ id, name, profile_path, character }) => {

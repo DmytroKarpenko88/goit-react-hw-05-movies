@@ -1,22 +1,24 @@
 import { Notify } from 'notiflix';
 import { useEffect, useState } from 'react';
+// import PropTypes from 'prop-types';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
 import { IMG_URL } from 'services/variables';
 import poster from '../components/Images/movie-background-collage.jpg';
-import { Heading, Grid, GridItem } from 'components';
+import { Grid, GridItem } from 'components';
+import Search from 'components/Search/Search';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  console.log('location:', location);
+  // console.log('location:', location);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const [searchQuery, setSearchQuery] = useState(query);
 
   const onSubmit = () => {
-    // setSearchQuery(query);
+    setSearchQuery(query);
     getMovies();
   };
   const handleSubmit = e => {
@@ -53,14 +55,17 @@ const Movies = () => {
   }, [searchQuery]);
 
   return (
-    <div>
-      <Heading>Movies 🎬</Heading>
-
-      <form onSubmit={handleSubmit}>
+    <>
+      {/* <form onSubmit={handleSubmit}>
         <button type="submit">Search</button>
         <input type="text" value={query} onChange={updateQueryString} />
-      </form>
-      {/* <input type="text" value={query} onChange={updateQueryString} /> */}
+      </form> */}
+
+      <Search
+        handleSubmit={handleSubmit}
+        query={query}
+        updateQueryString={updateQueryString}
+      />
 
       <Grid>
         {movies.map(({ id, title, poster_path }) => {
@@ -77,7 +82,7 @@ const Movies = () => {
           );
         })}
       </Grid>
-    </div>
+    </>
   );
 };
 

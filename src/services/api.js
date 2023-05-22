@@ -38,7 +38,7 @@ export async function fetchTrending(page = 1) {
 
   try {
     const response = await axios.get(`trending/all/day`, config);
-    console.log('response:', response.data);
+    // console.log('response:', response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -58,7 +58,7 @@ export async function searchMovie(searchValue) {
 
   try {
     const response = await axios.get(`search/movie`, config);
-    console.log('response:', response.data);
+    // console.log('response:', response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -75,7 +75,7 @@ export async function getMovieDetails(movie_id) {
 
   try {
     const response = await axios.get(`movie/${movie_id}`, config);
-    console.log('response:', response.data);
+    // console.log('response:', response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -91,7 +91,7 @@ export async function getMovieCredits(movie_id) {
 
   try {
     const response = await axios.get(`movie/${movie_id}/credits`, config);
-    console.log('response:', response.data);
+    // console.log('response:', response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -108,35 +108,9 @@ export async function getMovieReviews(movie_id) {
 
   try {
     const response = await axios.get(`movie/${movie_id}/reviews`, config);
-    console.log('response:', response.data);
+    // console.log('response:', response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
   }
 }
-
-// https://api.themoviedb.org/3/movie/550?api_key=70782f948786442cf5e8d6b76b4a0c54
-
-// const URL = 'https://pixabay.com/api/';
-
-// export async function fetchPhoto(value, numberPage = 1) {
-//   const config = {
-//     params: {
-//       key: API_KEY,
-//       q: value,
-//       image_type: 'photo',
-//       orientation: 'horizontal',
-//       safesearch: true,
-//       page: numberPage,
-//       per_page: 40,
-//     },
-//   };
-
-//   try {
-//     const response = await axios.get(URL, config);
-
-//     return response;
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// }
