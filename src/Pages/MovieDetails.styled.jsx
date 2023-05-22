@@ -25,10 +25,9 @@ export const GridItem = styled.li`
 
 export const Back = styled(Link)`
   display: flex;
-  margin: 15px 0;
 
-  height: 2em;
-  width: 100px;
+  height: 1.5em;
+  width: 150px;
   align-items: center;
   justify-content: center;
   background-color: #eeeeee4b;
@@ -48,7 +47,7 @@ export const Back = styled(Link)`
 
   &:hover > svg {
     font-size: 1.2em;
-    transform: translateX(-5px);
+    transform: translateX(-15px);
   }
 
   &:hover {
@@ -59,9 +58,16 @@ export const Back = styled(Link)`
 
 export const Section = styled.section`
   display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid black;
 `;
 
 export const Box = styled.div`
   width: 100%;
   margin-right: 15px;
+`;
+
+export const LinkList = styled.ul`
+  display: flex;
+  gap: 20px;
 `;
