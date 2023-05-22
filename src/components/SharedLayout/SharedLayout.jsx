@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Container, Header, Logo, Link, Footer } from './SharedLayout.styled';
+import { Container, Header, Link, Footer } from './SharedLayout.styled';
 import { Suspense } from 'react';
 import { Heading } from 'components';
 
