@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
 import { IMG_URL } from 'services/variables';
 import poster from '../components/Images/movie-background-collage.jpg';
 import { Grid, GridItem } from 'components';
 import Search from 'components/Search/Search';
+// import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -28,7 +28,7 @@ const Movies = () => {
   return (
     <>
       <Search onSubmit={onSubmit} />
-
+      {/* <MoviesList moviesList={movies} /> */}
       <Grid>
         {movies.map(({ id, title, poster_path }) => {
           return (

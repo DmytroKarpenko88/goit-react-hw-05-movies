@@ -26,7 +26,7 @@ const SharedLayout = () => {
         </main>
       </Content>
       <Footer>
-        <Heading>Footer</Heading>
+        <Heading></Heading>
       </Footer>
     </Container>
   );

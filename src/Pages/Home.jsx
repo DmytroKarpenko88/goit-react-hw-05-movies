@@ -1,3 +1,4 @@
+import LoadMore from 'components/Buttons/LoadMore';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 // import { useRef } from 'react';
@@ -21,20 +22,13 @@ const Home = () => {
       .finally(setLoading(true));
   }, [activPage]);
 
+  const onClick = activPage => {
+    setActivPage(activPage);
+  };
   return (
     <div>
       <MoviesList moviesList={moviesList} />
-      {loading && (
-        <button
-          type="button"
-          onClick={() => {
-            setActivPage(prev => prev + 1);
-            setLoading(false);
-          }}
-        >
-          Load more
-        </button>
-      )}
+      {loading && <LoadMore onClick={onClick} />}
     </div>
   );
 };

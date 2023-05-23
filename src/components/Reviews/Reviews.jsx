@@ -1,7 +1,9 @@
+import { RevList } from 'components';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
-import { IMG_URL } from 'services/variables';
+// import { IMG_URL } from 'services/variables';
+import ReviewsCart from './ReviewsCart';
 
 const Reviews = () => {
   const { query } = useParams();
@@ -19,42 +21,34 @@ const Reviews = () => {
 
   return (
     <div>
-      <>Reviews: {query}</>
       {totalResults && (
-        <ul>
-          {reviews.map(
-            ({
-              id,
-              author,
-              content,
-              url,
-              created_at,
-              author_details: { avatar_path, rating },
-            }) => {
-              return (
-                <li key={id}>
+        <RevList>
+          {reviews.map((review, index) => {
+            return (
+              <li key={index}>
+                <ReviewsCart review={review} />
+
+                {/* <div>
                   <div>
-                    <div>
-                      <img src={`${IMG_URL}${avatar_path}`} alt={author} />
-                    </div>
-                    <div>
-                      <h3>
-                        <a href={url}>Review by {author}</a>
-                      </h3>
-                      <span>{rating}</span>
-                    </div>
-                    <h5>
-                      Write by {author} on {created_at}
-                    </h5>
+                    <img src={`${IMG_URL}${avatar_path}`} alt={author} />
                   </div>
                   <div>
-                    <p>{content}</p>
+                    <h3>
+                      <a href={url}>Review by {author}</a>
+                    </h3>
+                    <span>{rating}</span>
                   </div>
-                </li>
-              );
-            }
-          )}
-        </ul>
+                  <h5>
+                    Write by {author} on {created_at}
+                  </h5>
+                </div>
+                <div>
+                  <p>{content}</p>
+                </div> */}
+              </li>
+            );
+          })}
+        </RevList>
       )}
     </div>
   );

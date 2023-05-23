@@ -10,7 +10,6 @@ const MoviesList = ({ moviesList }) => {
 
   return (
     <div>
-      <h1>Tranding today 👍</h1>
       <Grid>
         {moviesList.map(({ id, title, name, original_title, poster_path }) => (
           <GridItem key={id}>

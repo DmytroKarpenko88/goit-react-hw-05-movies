@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { theme } from 'styles';
 
 export const Container = styled.div`
   max-width: 960px;
@@ -45,7 +46,7 @@ export const Link = styled(NavLink)`
 
   &.active {
     color: white;
-    background-color: orangered;
+    background-color: ${theme.colors.accent};
   }
 `;
 
@@ -56,7 +57,6 @@ export const Footer = styled.footer`
   gap: 12px;
   padding: 8px 0;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
 
   height: 30px;
   flex-grow: 0;

@@ -11,6 +11,7 @@ export const BtnForm = styled.button`
 
 /* styling of whole input container */
 export const Form = styled.form`
+  margin: 8px 0;
   --timing: 0.3s;
   --width-of-input: 200px;
   --height-of-input: 40px;
