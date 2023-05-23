@@ -27,11 +27,16 @@ const API_KEY = '70782f948786442cf5e8d6b76b4a0c54';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.params = {
+  api_key: API_KEY,
+  include_adult: 'false',
+  language: 'en-US',
+};
 
 export async function fetchTrending(page = 1) {
   const config = {
     params: {
-      api_key: API_KEY,
+      // api_key: API_KEY,
       page: page,
     },
   };
@@ -48,10 +53,10 @@ export async function fetchTrending(page = 1) {
 export async function searchMovie(searchValue) {
   const config = {
     params: {
-      api_key: API_KEY,
+      // api_key: API_KEY,
       query: searchValue,
-      include_adult: 'false',
-      language: 'en-US',
+      // include_adult: 'false',
+      // language: 'en-US',
       page: '1',
     },
   };
@@ -68,8 +73,8 @@ export async function searchMovie(searchValue) {
 export async function getMovieDetails(movie_id) {
   const config = {
     params: {
-      api_key: API_KEY,
-      language: 'en-US',
+      // api_key: API_KEY,
+      // language: 'en-US',
     },
   };
 
@@ -84,8 +89,8 @@ export async function getMovieDetails(movie_id) {
 export async function getMovieCredits(movie_id) {
   const config = {
     params: {
-      api_key: API_KEY,
-      language: 'en-US',
+      // api_key: API_KEY,
+      // language: 'en-US',
     },
   };
 
@@ -100,8 +105,8 @@ export async function getMovieCredits(movie_id) {
 export async function getMovieReviews(movie_id) {
   const config = {
     params: {
-      api_key: API_KEY,
-      language: 'en-US',
+      // api_key: API_KEY,
+      // language: 'en-US',
       page: 1,
     },
   };

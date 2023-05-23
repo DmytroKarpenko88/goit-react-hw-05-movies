@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BtnForm, Form, Input } from './Search.styled';
 import PropTypes from 'prop-types';
+import { Notify } from 'notiflix';
 
-const Search = ({ handleSubmit, query, updateQueryString }) => {
+const Search = ({ onSubmit }) => {
+  const [query, setQuery] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!query) {
+      Notify.failure('Enter the request');
+      return;
+    }
+
+    onSubmit(query);
+  };
+
+  const handleChange = e => {
+    setQuery(e.currentTarget.value.trim());
+  };
+
   return (
     <>
       <Form className="form" onSubmit={handleSubmit}>
@@ -30,7 +46,7 @@ const Search = ({ handleSubmit, query, updateQueryString }) => {
           required=""
           type="text"
           value={query}
-          onChange={updateQueryString}
+          onChange={handleChange}
         />
       </Form>
     </>
