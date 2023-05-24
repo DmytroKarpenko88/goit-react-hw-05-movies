@@ -9,17 +9,17 @@ export const Card = styled.div`
   padding: 20px;
   max-width: 900px;
 `;
-export const Stars = styled.div`
-  display: flex;
-  grid-gap: 0.125rem;
-  gap: 0.125rem;
-  color: rgb(238, 203, 8);
-`;
+// export const Stars = styled.div`
+//   display: flex;
+//   grid-gap: 0.125rem;
+//   gap: 0.125rem;
+//   color: rgb(238, 203, 8);
+// `;
 
-export const Star = styled.div`
-  height: 1.25rem;
-  width: 1.25rem;
-`;
+// export const Star = styled.div`
+//   height: 1.25rem;
+//   width: 1.25rem;
+// `;
 
 export const Infos = styled.div`
   margin-top: 1rem;

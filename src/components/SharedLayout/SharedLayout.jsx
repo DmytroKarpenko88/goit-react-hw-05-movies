@@ -7,7 +7,6 @@ import {
   Footer,
 } from './SharedLayout.styled';
 import { Suspense } from 'react';
-import { Heading } from 'components';
 
 const SharedLayout = () => {
   return (
@@ -25,9 +24,7 @@ const SharedLayout = () => {
           </Suspense>
         </main>
       </Content>
-      <Footer>
-        <Heading></Heading>
-      </Footer>
+      <Footer></Footer>
     </Container>
   );
 };

@@ -12,7 +12,6 @@ const Cast = () => {
 
   useEffect(() => {
     getMovieCredits(query).then(({ cast }) => {
-      console.log(cast);
       setCasts(cast);
     });
   }, [query]);

@@ -1,5 +1,10 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { Box, LinkList, Section, StyledLink } from './MovieDetails.styled';
+import {
+  Box,
+  LinkList,
+  Section,
+  StyledLink,
+} from '../components/Moviedetails/MovieDetails.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { getMovieDetails } from 'services/api';
 import { IMG_URL } from 'services/variables';
@@ -13,9 +18,6 @@ const MovieDetails = () => {
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
-  // console.log('backLinkLocationRef:', backLinkLocationRef);
-  // console.log('location:', location);
-  // console.log('movie:', movie);
 
   useEffect(() => {
     getMovieDetails(query).then(res => {
