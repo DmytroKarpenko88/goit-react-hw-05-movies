@@ -3,6 +3,7 @@ import { Box, LinkList, Section, StyledLink } from './MovieDetails.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { getMovieDetails } from 'services/api';
 import { IMG_URL } from 'services/variables';
+import photo_Pattern from '../../Images/movie-background-collage.jpg';
 import BtnBack from 'components/Buttons/LinkBack';
 import { Heading } from 'components';
 import { formatYear } from 'utils/formateDate';
@@ -28,7 +29,14 @@ const MovieDetails = () => {
       <div>
         <Section>
           <Box>
-            <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
+            <img
+              src={
+                movie.poster_path
+                  ? `${IMG_URL}${movie.poster_path}`
+                  : photo_Pattern
+              }
+              alt={movie.title}
+            />
           </Box>
           <div>
             <section>
