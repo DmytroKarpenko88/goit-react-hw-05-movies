@@ -7,3 +7,4 @@ export * from 'components/SharedLayout/SharedLayout.styled';
 export * from 'components/Heading/Heading.styled';
 export * from 'components/Grid/Grid.styled';
 export * from 'components/Search/Search';
+export * from 'components/Loader/Loader';

@@ -7,6 +7,7 @@ import {
   Footer,
 } from './SharedLayout.styled';
 import { Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
 
 const SharedLayout = () => {
   return (
@@ -19,7 +20,7 @@ const SharedLayout = () => {
           </nav>
         </Header>
         <main>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </main>
