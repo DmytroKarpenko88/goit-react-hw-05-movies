@@ -16,7 +16,7 @@ const Reviews = () => {
 
   return (
     <div>
-      {reviews.length !== 0 && (
+      {reviews.length > 0 ? (
         <RevList>
           {reviews.map((review, index) => {
             return (
@@ -26,9 +26,9 @@ const Reviews = () => {
             );
           })}
         </RevList>
+      ) : (
+        <Heading>No reviews</Heading>
       )}
-
-      {!reviews.length && <Heading>No reviews</Heading>}
     </div>
   );
 };

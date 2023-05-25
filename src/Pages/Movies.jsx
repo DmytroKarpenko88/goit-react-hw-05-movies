@@ -35,7 +35,7 @@ const Movies = () => {
     <>
       <Search onSubmit={onSubmit} />
       <MoviesList moviesList={movies} />
-      {loading && <LoadMore onClick={onClick} />}
+      {movies.length > 0 && loading && <LoadMore onClick={onClick} />}
     </>
   );
 };
