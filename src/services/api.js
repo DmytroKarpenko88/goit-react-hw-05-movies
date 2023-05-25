@@ -26,11 +26,11 @@ export async function fetchTrending(page = 1) {
   }
 }
 
-export async function searchMovie(searchValue) {
+export async function searchMovie(searchValue, page = 1) {
   const config = {
     params: {
       query: searchValue,
-      page: '1',
+      page: page,
     },
   };
 

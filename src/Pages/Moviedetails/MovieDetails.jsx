@@ -1,10 +1,5 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import {
-  Box,
-  LinkList,
-  Section,
-  StyledLink,
-} from '../components/Moviedetails/MovieDetails.styled';
+import { Box, LinkList, Section, StyledLink } from './MovieDetails.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { getMovieDetails } from 'services/api';
 import { IMG_URL } from 'services/variables';
@@ -39,7 +34,7 @@ const MovieDetails = () => {
             <section>
               <div>
                 <h2>
-                  {movie.title}{' '}
+                  {movie.title}
                   <span>
                     ({movie.release_date ? formatYear(movie.release_date) : ''})
                   </span>

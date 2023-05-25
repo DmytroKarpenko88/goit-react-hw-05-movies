@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
 
-import photo_Pattern from '../../components/Images/person-png-icon-1.png';
+import photo_Pattern from '../../Images/person-png-icon-1.png';
 import { IMG_URL } from 'services/variables';
 
 const Cast = () => {
