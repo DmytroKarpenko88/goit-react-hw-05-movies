@@ -6,13 +6,14 @@ import { fetchTrending } from 'services/api';
 
 const Home = () => {
   const [moviesList, setMoviesList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [activPage, setActivPage] = useState(1);
 
   useEffect(() => {
+    setIsActive(false);
     fetchTrending(activPage)
       .then(({ results }) => setMoviesList(prev => [...prev, ...results]))
-      .finally(setLoading(true));
+      .finally(setIsActive(true));
   }, [activPage]);
 
   const onClick = activPage => {
@@ -21,7 +22,7 @@ const Home = () => {
   return (
     <div>
       <MoviesList moviesList={moviesList} />
-      {loading && <LoadMore onClick={onClick} />}
+      {moviesList.length > 0 && isActive && <LoadMore onClick={onClick} />}
     </div>
   );
 };
