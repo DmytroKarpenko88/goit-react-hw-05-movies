@@ -50,12 +50,8 @@ export async function getMovieDetails(movie_id) {
   }
 }
 export async function getMovieCredits(movie_id) {
-  const config = {
-    params: {},
-  };
-
   try {
-    const response = await axios.get(`movie/${movie_id}/credits`, config);
+    const response = await axios.get(`movie/${movie_id}/credits`);
 
     return response.data;
   } catch (error) {
@@ -63,14 +59,8 @@ export async function getMovieCredits(movie_id) {
   }
 }
 export async function getMovieReviews(movie_id) {
-  const config = {
-    params: {
-      page: 1,
-    },
-  };
-
   try {
-    const response = await axios.get(`movie/${movie_id}/reviews`, config);
+    const response = await axios.get(`movie/${movie_id}/reviews`);
 
     return response.data;
   } catch (error) {
