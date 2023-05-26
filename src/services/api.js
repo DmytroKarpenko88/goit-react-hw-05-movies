@@ -19,7 +19,7 @@ export async function fetchTrending(page = 1) {
   };
 
   try {
-    const response = await axios.get(`trending/all/day`, config);
+    const response = await axios.get(`trending/movie/day`, config);
     return response.data;
   } catch (error) {
     Notify.failure(error.message);
