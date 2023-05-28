@@ -3,6 +3,7 @@ import SharedLayout from '../SharedLayout/SharedLayout';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import { lazy } from 'react';
+import PageNotFound from 'Pages/PageNotFound/PageNotFound';
 
 const Home = lazy(() => import('../../Pages/Home'));
 const MovieDetails = lazy(() =>
@@ -21,6 +22,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<PageNotFound />}></Route>
         </Route>
       </Routes>
     </div>
